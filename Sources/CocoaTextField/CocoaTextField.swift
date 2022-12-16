@@ -82,13 +82,13 @@ open class CocoaTextField: UITextField {
         didSet { updateHint() }
     }
     
-    private var isHintVisible = false
-    private let hintLabel = UILabel()
-    private let errorLabel = UILabel()
+    open var isHintVisible = false
+    public let hintLabel = UILabel()
+    public let errorLabel = UILabel()
     
-    private let padding: CGFloat = 16
-    private let hintFont = UIFont.systemFont(ofSize: 12)
-    private var initialBoundsWereCalculated = false
+    public let padding: CGFloat = 16
+    public let hintFont = UIFont.systemFont(ofSize: 12)
+    public var initialBoundsWereCalculated = false
     
     //  MARK: Public
     
@@ -102,20 +102,20 @@ open class CocoaTextField: UITextField {
         errorLabel.shake(offset: 10)
     }
     
-    //  MARK: Private
+    //  MARK: open
     
-    private func initializeTextField() {
+    open func initializeTextField() {
         configureTextField()
         configureHint()
         configureErrorLabel()
         addObservers()
     }
     
-    private func addObservers() {
+    open func addObservers() {
         addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
-    private func configureTextField() {
+    open func configureTextField() {
         clearButtonMode = .whileEditing
         autocorrectionType = .no
         spellCheckingType = .no
@@ -124,13 +124,13 @@ open class CocoaTextField: UITextField {
         addSubview(hintLabel)
     }
     
-    private func configureHint() {
+    open func configureHint() {
         hintLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         updateHint()
         hintLabel.textColor = inactiveHintColor
     }
 
-    private func updateHint() {
+    open func updateHint() {
         if isHintVisible {
             // Small placeholder
             hintLabel.alpha = 1
@@ -147,7 +147,7 @@ open class CocoaTextField: UITextField {
         }
     }
     
-    private func configureErrorLabel() {
+    open func configureErrorLabel() {
         errorLabel.font = UIFont.systemFont(ofSize: 12)
         errorLabel.textAlignment = .right
         errorLabel.textColor = errorColor
@@ -155,7 +155,7 @@ open class CocoaTextField: UITextField {
         addSubview(errorLabel)
     }
     
-    private func activateTextField() {
+    open func activateTextField() {
         if isHintVisible { return }
         isHintVisible.toggle()
         
@@ -169,7 +169,7 @@ open class CocoaTextField: UITextField {
         }
     }
     
-    private func deactivateTextField() {
+    open func deactivateTextField() {
         if !isHintVisible { return }
         isHintVisible.toggle()
         
@@ -181,18 +181,18 @@ open class CocoaTextField: UITextField {
         }
     }
     
-    private func hintHeight() -> CGFloat {
+    open func hintHeight() -> CGFloat {
         return hintFont.lineHeight - padding / 8
     }
     
-    private func updateErrorLabelPosition() {
+    open func updateErrorLabelPosition() {
         let size = errorLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         errorLabel.frame.size = size
         errorLabel.frame.origin.x = frame.width - size.width
         errorLabel.frame.origin.y = frame.height + padding / 4
     }
     
-    @objc private func textFieldDidChange() {
+    @objc open func textFieldDidChange() {
         UIView.animate(withDuration: 0.2) {
             self.errorLabel.alpha = 0
             self.layer.borderColor = self.focusedBackgroundColor.cgColor
