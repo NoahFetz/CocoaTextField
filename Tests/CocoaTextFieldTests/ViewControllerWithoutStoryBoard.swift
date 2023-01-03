@@ -56,7 +56,7 @@ class ViewControllerWithoutStoryBoard: UIViewController {
         v.defaultBackgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
         v.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         v.errorColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 0.7)
-        v.borderWidth = 1
+        v.cocoaBorderWidth = 1
         v.cornerRadius = 11
     }
 }

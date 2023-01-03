@@ -53,8 +53,8 @@ open class CocoaTextField: UITextField {
     * Sets border width
     */
     @IBInspectable
-    open var borderWidth: CGFloat = 1.0 {
-        didSet { layer.borderWidth = borderWidth }
+    open var cocoaBorderWidth: CGFloat = 1.0 {
+        didSet { layer.borderWidth = cocoaBorderWidth }
     }
     
     /**
@@ -119,7 +119,7 @@ open class CocoaTextField: UITextField {
         clearButtonMode = .whileEditing
         autocorrectionType = .no
         spellCheckingType = .no
-        layer.borderWidth = borderWidth
+        layer.borderWidth = cocoaBorderWidth
         layer.cornerRadius = cornerRadius
         addSubview(hintLabel)
     }
