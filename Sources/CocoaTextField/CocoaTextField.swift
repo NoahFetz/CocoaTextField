@@ -83,6 +83,7 @@ open class CocoaTextField: UITextField {
     }
     
     open var isHintVisible = false
+    open var keepHintVisible = true
     public let hintLabel = UILabel()
     public let errorLabel = UILabel()
     
@@ -143,7 +144,7 @@ open class CocoaTextField: UITextField {
             hintLabel.font = font
         } else {
             // No placeholder
-            hintLabel.alpha = 0
+            hintLabel.alpha = self.keepHintVisible ? 1 : 0
         }
     }
     
