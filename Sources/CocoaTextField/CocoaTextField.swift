@@ -132,7 +132,7 @@ open class CocoaTextField: UITextField {
     }
 
     open func updateHint() {
-        if isHintVisible {
+        if isHintVisible || (keepHintVisible && !(text?.isEmpty ?? true)) {
             // Small placeholder
             hintLabel.alpha = 1
             hintLabel.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -hintHeight())
@@ -144,7 +144,7 @@ open class CocoaTextField: UITextField {
             hintLabel.font = font
         } else {
             // No placeholder
-            hintLabel.alpha = self.keepHintVisible ? 1 : 0
+            hintLabel.alpha = 0
         }
     }
     
