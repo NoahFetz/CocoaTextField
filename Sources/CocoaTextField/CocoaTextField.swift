@@ -132,10 +132,10 @@ open class CocoaTextField: UITextField {
     }
 
     open func updateHint() {
-        if initialBoundsWereCalculated && (isHintVisible || (keepHintVisible && !(text?.isEmpty ?? true))) {
+        if isHintVisible || (keepHintVisible && !(text?.isEmpty ?? true)) {
             // Small placeholder
             hintLabel.alpha = 1
-            hintLabel.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -hintHeight())
+            hintLabel.transform = CGAffineTransform.identity.translatedBy(x: 0, y: initialBoundsWereCalculated ? -hintHeight() : 0)
             hintLabel.font = hintFont
         } else if text?.isEmpty ?? true {
             // Large placeholder
