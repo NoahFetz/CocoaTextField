@@ -135,13 +135,13 @@ open class CocoaTextField: UITextField {
         if isHintVisible || (keepHintVisible && !(text?.isEmpty ?? true)) {
             // Small placeholder
             hintLabel.alpha = 1
+            hintLabel.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -12)
             hintLabel.font = hintFont
-            hintLabel.transform = CGAffineTransform.identity.translatedBy(x: 0, y: initialBoundsWereCalculated ? -hintHeight() : 0)
         } else if text?.isEmpty ?? true {
             // Large placeholder
             hintLabel.alpha = 1
-            hintLabel.font = font
             hintLabel.transform = CGAffineTransform.identity.translatedBy(x: 0, y: 0)
+            hintLabel.font = font
         } else {
             // No placeholder
             hintLabel.alpha = 0
