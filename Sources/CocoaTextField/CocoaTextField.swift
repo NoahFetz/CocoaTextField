@@ -132,7 +132,7 @@ open class CocoaTextField: UITextField {
     }
 
     open func updateHint() {
-        if isHintVisible || (keepHintVisible && !(text?.isEmpty ?? true)) {
+        if initialBoundsWereCalculated && (isHintVisible || (keepHintVisible && !(text?.isEmpty ?? true))) {
             // Small placeholder
             hintLabel.alpha = 1
             hintLabel.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -hintHeight())
@@ -257,6 +257,7 @@ open class CocoaTextField: UITextField {
                 size: CGSize(width: frame.width - padding * 3, height: frame.height)
             )
             initialBoundsWereCalculated = true
+            updateHint()
         }
     }
     
