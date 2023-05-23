@@ -218,7 +218,7 @@ open class CocoaTextField: UITextField {
         let superRect = super.textRect(forBounds: bounds)
         let rect = CGRect(
             x: padding,
-            y: (!self.isHintVisible && self.keepHintVisible) ? hintHeight() - padding / 8 : superRect.origin.y,
+            y: (!self.isHintVisible && self.keepHintVisible && !(self.text?.isEmpty ?? true)) ? hintHeight() - padding / 8 : superRect.origin.y,
             width: superRect.size.width - padding * 1.5,
             height: superRect.size.height
         )
